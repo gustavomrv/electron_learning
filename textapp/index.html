@@ -34,7 +34,7 @@
             </button>
           </div>
       
-          <button class="btn btn-default pull-right">
+          <button class="btn btn-default pull-right" onclick="saveText()">
             <span class="icon icon-download icon-text"></span>
             Save
           </button>
@@ -48,6 +48,8 @@
     </div>
 
     <script>
+      const electron = require('electron')  
+      const {ipcRenderer} = electron
         let textarea = document.querySelector('textarea')
         let defaultFontSize = 20
         function increaseFont(){
@@ -56,6 +58,13 @@
 
         function decreaseFont(){
             textarea.style.fontSize = `${defaultFontSize-=2}px`
+        }
+
+        function saveText(){
+            let text = textarea.value
+            console.log(text)
+            ipcRenderer.send('save', text)
+            // ipcRenderer.send('delete', text)
         }
     </script>
 
