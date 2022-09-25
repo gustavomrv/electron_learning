@@ -69,9 +69,14 @@
         ipcRenderer.on('saved', (event, results)=>{
           if(results=='success'){
             console.log('note saved successfully')
+            textarea.style.backgroundColor = "#b2ff99"
           }else{
             console.log('error saving text')
+            textarea.style.backgroundColor = "#ff8989"
           }
+
+          setTimeout(function(){textarea.style.backgroundColor = ""} , 1000)
+
         })
     </script>
 
