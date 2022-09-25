@@ -65,6 +65,14 @@
             console.log(text)
             ipcRenderer.send('save', text)
         }
+
+        ipcRenderer.on('saved', (event, results)=>{
+          if(results=='success'){
+            console.log('note saved successfully')
+          }else{
+            console.log('error saving text')
+          }
+        })
     </script>
 
   </body>
